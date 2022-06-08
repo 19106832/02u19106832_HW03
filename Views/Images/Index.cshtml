@@ -1,0 +1,42 @@
+﻿@model List<_02u19106832_HW03.Models.FileModel>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Images</h2>
+
+<div class="container-fluid">
+    <div class="row">
+        @if (Model != null)
+        {
+            foreach (var image in Model)
+            {
+
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                    
+                    <a href="~/App_Data/Images/" data-caption="@image.FileName" data-fancybox="FancyImg">
+                        <img src="~/App_Data/Images/" style="height:300px" />
+                        <p>@image.FileName</p>
+                    </a>
+                    <button class="btn btn-danger"> @Html.ActionLink("Download", "Download", new { DownloadImg = image.FileName })</button>
+                    <button class="btn btn-success"> @Html.ActionLink("Delete", "Delete", new { DeleteImg = image.FileName }, new { onclick = "return confirm('Are you sure you wish to delete this?');" })</button>
+                </div>
+
+            }
+        }
+        else
+        {
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                No images
+            </div>
+
+        }
+
+    </div>
+</div>
+
+<script>
+$(document).ready(function ($) {
+$(".FancyImg").fancybox();
+});
+</script>

@@ -1,0 +1,47 @@
+﻿@model IEnumerable<_02u19106832_HW03.Models.FileModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<div class="FileTable">
+    <table class="table">
+        <tr>
+            <th>
+                File Name
+            </th>
+            <th></th>
+        </tr>
+        @if (Model != null)
+        {
+            foreach (var file in Model)
+            {
+                <tr>
+                    <td>
+                        <!---Displaying the file name-->
+                        @Html.DisplayFor(modelItem => file.FileName)
+                    </td>
+                    <td>
+                        <!--loading the buttons on the webpage-->
+                        <button class="btn btn-danger"> 
+                        @Html.ActionLink("Download", "Download", new { DownloadFile= file.FileName })</button>
+                        <button class="btn btn-success">
+                            @Html.ActionLink("Delete", "Delete", new { DeleteFile = file.FileName }, new { onclick = "return confirm('Are you sure you wish to delete this?');" })
+                        </button>
+                    </td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td>No Files</td>
+            </tr>
+        }
+
+
+    </table>
+</div>
+

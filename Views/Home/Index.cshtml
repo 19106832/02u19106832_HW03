@@ -1,0 +1,38 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+@ViewBag.Msg
+<div class="jumbotron">
+
+    <div class="row">
+        <div class=col-lg-9>
+            <h2>Description</h2>
+            <p style="font-family:Arial"size:12px>This is a uploading and retrieveing system.Where files, images and videos were set to be uploaded and the user been able to download/ delete the file as it is stored onto the website. </p>
+
+        </div>
+        <div class=col-lg-3>
+            <h2>Option Selection</h2>
+            @using (Html.BeginForm("Index", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                {
+                    <label>Document</label>
+                    <input type="radio" name="radButton" value="Document" /><br />
+
+                    <label>Image</label>
+                    <input type="radio" name="radButton" value="Image" /><br />
+
+                    <label>Video</label>
+                    <input type="radio" name="radButton" value="Video" />
+
+                    <input type="file" name="files" />
+                    <br />
+                    <button type="submit">Submit</button>
+                }
+
+            }
+
+        </div>
+    </div>
+
+</div>
